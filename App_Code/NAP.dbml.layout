@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="NAP">
+  <DataContextMoniker Name="/NAPDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5599597a-99fa-4bb9-b746-e43a83e74f68" absoluteBounds="2.875, 0.75, 2, 7.5399397786458326">
+      <DataClassMoniker Name="/NAPDataContext/Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6f5e7dff-e556-4bec-b623-2f39c2035226" absoluteBounds="2.89, 1.21, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="68aa0569-e3c1-45a1-82b4-2eed91d072f7" absoluteBounds="0.5, 0.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/NAPDataContext/Supplier" />
+      <nestedChildShapes>
+        <elementListCompartment Id="97255118-bdc9-4e80-9521-e8cadff5ec4b" absoluteBounds="0.515, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 1.56814697265625); (2.875 : 1.56814697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NAPDataContext/Supplier/Supplier_Product" />
+      <nodes>
+        <classShapeMoniker Id="68aa0569-e3c1-45a1-82b4-2eed91d072f7" />
+        <classShapeMoniker Id="5599597a-99fa-4bb9-b746-e43a83e74f68" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="807c7fc7-a41b-4e42-96fe-cea3028700c0" absoluteBounds="8.625, 0.75, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/NAPDataContext/Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="debaafae-1859-40ec-9a53-284ec355568c" absoluteBounds="8.64, 1.21, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d811de8b-7983-487b-9bae-0f96821eb4d5" absoluteBounds="5.5, 0.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/NAPDataContext/ProductsXCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fba529ab-82a0-47d1-97dc-1763d358b551" absoluteBounds="5.515, 1.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.625 : 1.38064697265625); (7.5 : 1.38064697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NAPDataContext/Category/Category_ProductsXCategory" />
+      <nodes>
+        <classShapeMoniker Id="807c7fc7-a41b-4e42-96fe-cea3028700c0" />
+        <classShapeMoniker Id="d811de8b-7983-487b-9bae-0f96821eb4d5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.875 : 1.38064697265625); (5.5 : 1.38064697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NAPDataContext/Product/Product_ProductsXCategory" />
+      <nodes>
+        <classShapeMoniker Id="5599597a-99fa-4bb9-b746-e43a83e74f68" />
+        <classShapeMoniker Id="d811de8b-7983-487b-9bae-0f96821eb4d5" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="31c2b5ad-23a9-47dd-9584-41288831fdad" absoluteBounds="0.5, 2.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/NAPDataContext/Choice" />
+      <nestedChildShapes>
+        <elementListCompartment Id="583c61da-0208-403e-81a1-5014461149eb" absoluteBounds="0.515, 3.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.875 : 3.92390055338542); (2.5 : 3.92390055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NAPDataContext/Product/Product_Choice" />
+      <nodes>
+        <classShapeMoniker Id="5599597a-99fa-4bb9-b746-e43a83e74f68" />
+        <classShapeMoniker Id="31c2b5ad-23a9-47dd-9584-41288831fdad" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9001af98-9228-4781-92a7-f3451c38e3dc" absoluteBounds="5.5, 2.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/NAPDataContext/vw_Customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="53d3caf3-b236-4d18-b662-676092ec02c2" absoluteBounds="5.515, 2.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

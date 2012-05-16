@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NAP" Class="NAPDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(local);Initial Catalog=NAP;User ID=sqlneedapresent2" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="NAPConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Products" Member="Products">
+    <Type Name="Product">
+      <Column Name="ID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SKU" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
+      <Column Name="SalePrice" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="Cost" Type="System.Decimal" DbType="SmallMoney" CanBeNull="true" />
+      <Column Name="SupplierID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SupplierSKU" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="HasVariants" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsPersonalised" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsExpress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsWrappable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsNew" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsTop20" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="[Option]" Member="Option" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="TaxClass" Type="System.String" DbType="VarChar(2) NOT NULL" CanBeNull="false" />
+      <Column Name="ShipSeparately" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="WeightGM" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="WidthCM" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="LengthCM" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="HeightCM" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="DescriptionShort" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DescriptionMedium" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DescriptionLong" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MetaTitle" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="MetaDescription" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="MetaKeywords" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="RewriteURL" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ImageFileName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="DateModified" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Product_ProductsXCategory" Member="ProductsXCategories" ThisKey="ID" OtherKey="ProductID" Type="ProductsXCategory" />
+      <Association Name="Product_Choice" Member="Choices" ThisKey="ID" OtherKey="ProductID" Type="Choice" />
+      <Association Name="Supplier_Product" Member="Supplier" ThisKey="SupplierID" OtherKey="ID" Type="Supplier" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Suppliers" Member="Suppliers">
+    <Type Name="Supplier" Id="ID1">
+      <Column Name="ID" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ContactTel" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Supplier_Product" Member="Products" ThisKey="ID" OtherKey="SupplierID" Type="Product" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categories" Member="Categories">
+    <Type Name="Category">
+      <Column Name="ID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="TagLine" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BannerImage" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MenuOffImage" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MenuOnImage" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MetaTitle" Type="System.String" DbType="VarChar(120) NOT NULL" CanBeNull="false" />
+      <Column Name="MetaDescription" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="MetaKeywords" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="URLPrefix" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="RewriteURL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ShowInMenu" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SortOrder" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastModified" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="OLDCATID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="IsFeatured" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Category_ProductsXCategory" Member="ProductsXCategories" ThisKey="ID" OtherKey="CategoryID" Type="ProductsXCategory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductsXCategories" Member="ProductsXCategories">
+    <Type Name="ProductsXCategory">
+      <Column Name="ProductID" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CategoryID" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IsFeaturedOnHomePage" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Category_ProductsXCategory" Member="Category" ThisKey="CategoryID" OtherKey="ID" Type="Category" IsForeignKey="true" />
+      <Association Name="Product_ProductsXCategory" Member="Product" ThisKey="ProductID" OtherKey="ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Choices" Member="Choices">
+    <Type Name="Choice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="LabelText" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayType" Type="System.String" DbType="VarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="DisplayOrder" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Validate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Product_Choice" Member="Product" ThisKey="ProductID" OtherKey="ID" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_Customers" Member="vw_Customers">
+    <Type Name="vw_Customer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="IsSubscribed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NamePrefix" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="NameFirst" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="NameLast" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.adm_SuppliersActive_s" Method="GetActiveSuppliers">
+    <ElementType IdRef="ID1" />
+  </Function>
+</Database>

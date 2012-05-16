@@ -1,0 +1,56 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master"  EnableViewState="true"  AutoEventWireup="false" CodeFile="BAK.Category_Product.aspx.vb" Inherits="Category_Product" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+<style type="text/css">
+.added {color:Green; font-weight:bold;background-color: yellow;}
+.removed {color:#fff; font-weight:bold;background-color: red;}
+</style>
+
+
+    <div class="content-box"><!-- Start Content Box -->
+	    <div class="content-box-header">
+		    <h3>Edit Products in : <asp:Literal runat="server" ID="litProductName"></asp:Literal></h3>    
+		    <div class="clear"></div>
+	    </div> <!-- End .content-box-header -->
+	    <div class="content-box-content">
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate> 
+                <asp:CheckBoxList ID="CheckBoxList1"  runat="server"
+                RepeatLayout="Table" RepeatColumns="4" Width="100%" 
+                DataTextField="Name" DataValueField="ID" 
+                RepeatDirection="vertical" AutoPostBack="true"> 
+                </asp:CheckBoxList>
+                <asp:Label runat="server" ID="Label1"></asp:Label>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+	    </div> <!-- End .content-box-content -->
+    </div> <!-- End .content-box -->
+
+    <script type="text/javascript">
+    <!--
+        function pageLoad() {
+
+            $("#MainContent_CheckBoxList1 input").click(function () {
+                if ($(this).attr("checked") == true) {
+                    $(this).parent('td').addClass("added");
+                } else {
+                    $(this).parent('td').removeClass("added");
+                    $(this).parent('td').addClass("removed");
+                }
+            });
+        }
+
+
+    //-->
+    </script>
+
+</asp:Content>
+

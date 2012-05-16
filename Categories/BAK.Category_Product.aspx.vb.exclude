@@ -1,0 +1,50 @@
+﻿Imports NAPDataSetTableAdapters
+Imports NAPDataSet
+
+Partial Class Category_Product
+    Inherits System.Web.UI.Page
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+        If Not Page.IsPostBack Then
+
+            Dim productAdapter As New ProductsTableAdapter
+            CheckBoxList1.DataSource = productAdapter.GetActiveProductIDs()
+            CheckBoxList1.DataBind()
+
+            Dim prodsxcatsAdapter As New ProductsXCategoriesTableAdapter()
+            Dim prodsxcats As ProductsXCategoriesDataTable
+            prodsxcats = prodsxcatsAdapter.GetProductsByCategory(Request.QueryString("cid"))
+
+            For Each row As ProductsXCategoriesRow In prodsxcats
+                Dim myitem As New ListItem()
+                myitem = CheckBoxList1.Items.FindByValue(row.ProductID)
+                myitem.Selected = True
+                litProductName.Text = row.CategoryName
+            Next
+
+        End If
+
+    End Sub
+
+    Protected Sub CheckBoxList1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckBoxList1.SelectedIndexChanged
+
+        Dim prodsxcatsAdapter As New ProductsXCategoriesTableAdapter()
+
+        Dim name As String = Request.Form("__EVENTTARGET")
+        If name.IndexOf("CheckBoxList") <> -1 Then
+            Dim last As Integer = name.LastIndexOf("$") + 1
+            Dim index As Integer = Convert.ToInt32(name.Substring(last, name.Length - last))
+            If CheckBoxList1.Items(index).Selected Then
+                Label1.Text = Request.QueryString("cid") & " / " & CheckBoxList1.Items(index).Value & " / " & CheckBoxList1.Items(index).Selected
+                prodsxcatsAdapter.InsertProductXCategory(CheckBoxList1.Items(index).Value, Request.QueryString("cid"), False)
+            Else
+                Label1.Text = Request.QueryString("cid") & " / " & CheckBoxList1.Items(index).Value & " / " & CheckBoxList1.Items(index).Selected
+                prodsxcatsAdapter.DeleteProductXCategory(CheckBoxList1.Items(index).Value, Request.QueryString("cid"))
+            End If
+
+        End If
+
+    End Sub
+
+End Class
